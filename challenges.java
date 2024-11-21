@@ -2,27 +2,39 @@
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class main {
+
+public class challenges {
     // Challenge 1 - Reverse a string
     public static String reverse(String str) {
-        // l'objet StringBuilder pourrait être utile...
-        return new StringBuilder
-    }
+        String reversed = "";
+        /* convertir la chaîne en tableau de caractères
+        char[] chars = 
+        */
+
+        // boucler à travers le tableau de caractères en ordre inverse
+
+        return reversed;
+    };
 
     // Challenge 2 - Check if a string is a palindrome
     public static boolean isPalindrome(String str) {
-        String reversed = 
-        return str.equals
+        /* utilise le code du challenge 1!
+        String reversed =  
+        */
+        return false;
     }
 
     // Challenge 3 - Generate Fibonacci sequence
     public static int[] generateFibonacci(int n) {
-        // initialiser un tableau d'entiers de taille n
-        int[] fib = 
+        //créer un tableau d'entiers de taille n
+        int[] fib = new int[n];
+        /* initialiser les premiers éléments de la suite de Fibonacci
         if (n > 0)
             fib[0] = 0;
         if (n > 1)
             fib[1] = 1;
+        return fib;
+        */
         // générer les nombres de la suite de Fibonacci
         return fib;
     }
@@ -61,23 +73,22 @@ public class main {
     // challenge 8 - Merge two sorted arrays
     public static int[] merge(int[] arr1, int[] arr2) {
         // déclarer un tableau pour stocker les éléments fusionnés
-        int[] merged = 
+        int[] merged = new int[arr1.length + arr2.length];
 
         // i est l'index pour arr1, j est l'index pour arr2, k est l'index pour merged
         int i = 0, j = 0, k = 0;
 
         // fusionner les deux tableaux
        
-        // ajouter les éléments restants de arr1 
-
-        // ajouter les éléments restants de arr2 
+        // ajouter les éléments restants de arr1 et / ou arr2
 
         return merged;
     }
 
     // challenge 9 - Find the second largest element in an array
     public static int findSecondLargest(int[] arr) {
-        // initialiser les variables pour stocker le plus grand et le deuxième plus grand élément
+        // initialiser les variables pour stocker le plus grand et le deuxième plus
+        // grand élément
         int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
 
         // trouver le deuxième plus grand élément dans le tableau
@@ -95,7 +106,24 @@ public class main {
         }
         // convertir l'ensemble en tableau
         int[] result = new int[set.size()];
+
         return result;
+    }
+
+    // challenge 11 - Simple calculator using operators +, -, *, /
+    public static double calculate(int num1, int num2, char operator) {
+        double result = 0;
+        // effectuer l'opération appropriée en utilisant un switch
+        return result;
+    }
+
+    // challenge 12 - Using a lambda expression to output lowercase of a string
+    public static void printLowerCase(String str) {
+        /* définir une expression lambda pour convertir une chaîne en minuscules
+           la méthode forEach est utilisée pour appliquer la lambda à chaque caractère de la chaîne
+           la méthode toLowerCase de la classe Character pourrait être utile
+        str.chars().
+        */
     }
 
     public static void main(String[] args) {
@@ -147,5 +175,15 @@ public class main {
         int[] arr4 = { 1, 2, 2, 3, 4, 4, 5 };
         System.out.print("Challenge 10: ");
         System.out.println(Arrays.toString(removeDuplicates(arr4))); // Output: [1, 2, 3, 4, 5]
+
+        // testing challenge 11
+        System.out.println(calculate(10, 5, '+')); // Output: 15.0
+        System.out.println(calculate(10, 5, '-')); // Output: 5.0
+        System.out.println(calculate(10, 5, '*')); // Output: 50.0
+        System.out.println(calculate(10, 5, '/')); // Output: 2.0
+
+        // Testing challenge 12
+        System.out.print("Challenge 12: ");
+        printLowerCase("HELLO"); // Output: hello
     }
 }
