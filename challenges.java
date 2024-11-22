@@ -7,35 +7,39 @@ public class challenges {
     // Challenge 1 - Reverse a string
     public static String reverse(String str) {
         String reversed = "";
-        /* convertir la chaîne en tableau de caractères
-        char[] chars = 
-        */
+        // convertir la chaîne en tableau de caractères
+        char[] chars = str.toCharArray();
 
         // boucler à travers le tableau de caractères en ordre inverse
+        for (int i = chars.length - 1; i >= 0; i--) {
+            reversed += chars[i];
+        }
 
         return reversed;
     };
 
     // Challenge 2 - Check if a string is a palindrome
     public static boolean isPalindrome(String str) {
-        /* utilise le code du challenge 1!
-        String reversed =  
-        */
-        return false;
+        // utilise le code du challenge 1!
+        String reversed = reverse(str);
+
+        return reversed.equals(str);
     }
 
     // Challenge 3 - Generate Fibonacci sequence
     public static int[] generateFibonacci(int n) {
         //créer un tableau d'entiers de taille n
         int[] fib = new int[n];
-        /* initialiser les premiers éléments de la suite de Fibonacci
+        // initialiser les premiers éléments de la suite de Fibonacci
         if (n > 0)
             fib[0] = 0;
         if (n > 1)
             fib[1] = 1;
-        return fib;
-        */
+
         // générer les nombres de la suite de Fibonacci
+        for (int i = 2; i < n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
         return fib;
     }
 
@@ -44,14 +48,23 @@ public class challenges {
         if (n == 0)
             return 0;
         int result = 1;
+
         // calculer le factoriel de n
+        for (int i = 1; i <= n; i++)
+            result *= i;
+
         return result;
     }
 
     // Challenge 5 - Find the largest element in an array
     public static int findLargest(int[] arr) {
         int max = arr[0];
+
         // trouver le plus grand élément dans le tableau
+        for (int num : arr)
+            if (num > max)
+                max = num;
+
         return max;
     }
 
@@ -59,6 +72,11 @@ public class challenges {
     public static int sumOfDigits(int n) {
         int sum = 0;
         // calculer la somme des chiffres de n
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit;
+            n /= 10;
+        }
         return sum;
     }
 
@@ -67,6 +85,9 @@ public class challenges {
         if (n <= 1)
             return false;
         // vérifier si n est un nombre premier
+        for (int i = 2; i <= Math.sqrt(n); i++)
+            if (n % i == 0)
+                return false;
         return true;
     }
 
@@ -158,7 +179,7 @@ public class challenges {
 
         // Testing challenge 7
         System.out.print("Challenge 7: ");
-        System.out.println(isPrime(7)); // Output: true
+        System.out.println(isPrime(2147483647)); // Output: true
 
         // Testing challenge 8
         int[] arr1 = { 1, 3, 5 };
