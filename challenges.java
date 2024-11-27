@@ -114,6 +114,12 @@ public class challenges {
 
         // trouver le deuxième plus grand élément dans le tableau
         for (int num : arr) {
+            if (num > first)
+                first = num; 
+        }
+        for (int num : arr) {
+            if (num > second && num < first)
+                second = num;
         }
         return second;
     }
