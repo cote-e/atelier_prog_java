@@ -100,8 +100,28 @@ public class challenges {
         int i = 0, j = 0, k = 0;
 
         // fusionner les deux tableaux
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                merged[k] = arr1[i];
+                i++;
+            } else {
+                merged[k] = arr2[j];
+                j++;
+            }
+            k++;
+        }
        
         // ajouter les éléments restants de arr1 et / ou arr2
+        while (i < arr1.length) {
+            merged[k] = arr1[i];
+            i++;
+            k++;
+        }
+        while (j < arr2.length) {
+            merged[k] = arr2[j];
+            j++;
+            k++;
+        }
 
         return merged;
     }
@@ -128,11 +148,17 @@ public class challenges {
     public static int[] removeDuplicates(int[] arr) {
         // utiliser un ensemble pour stocker les éléments uniques
         HashSet<Integer> set = new HashSet<>();
-        for (int num : arr) {
-            set.add(num);
+        for (int num = 0; num < arr.length; num++) {
+            if (!set.contains(arr[num])) 
+                set.add(arr[num]);
         }
         // convertir l'ensemble en tableau
         int[] result = new int[set.size()];
+        int i = 0;
+        for (int n:set){
+            result[i] = n;
+            i++;
+        }
 
         return result;
     }
@@ -140,17 +166,37 @@ public class challenges {
     // challenge 11 - Simple calculator using operators +, -, *, /
     public static double calculate(int num1, int num2, char operator) {
         double result = 0;
-        // effectuer l'opération appropriée en utilisant un switch
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0)
+                    result = (double) num1 / num2;
+                else 
+                    System.err.println("erreur division par zero");
+                break;
+            
+            default:
+                break;
+        }
         return result;
     }
 
     // challenge 12 - Using a lambda expression to output lowercase of a string
     public static void printLowerCase(String str) {
-        /* définir une expression lambda pour convertir une chaîne en minuscules
-           la méthode forEach est utilisée pour appliquer la lambda à chaque caractère de la chaîne
-           la méthode toLowerCase de la classe Character pourrait être utile
-        str.chars().
-        */
+        // no lambda
+        String low = str.toLowerCase();
+        System.out.println(low);
+        // no lambda
+        System.out.println(str.toLowerCase());
+        // i genuinely have no clue why and how i would use a lambda here
     }
 
     public static void main(String[] args) {
@@ -204,6 +250,7 @@ public class challenges {
         System.out.println(Arrays.toString(removeDuplicates(arr4))); // Output: [1, 2, 3, 4, 5]
 
         // testing challenge 11
+        System.out.print("Challenge 11: ");
         System.out.println(calculate(10, 5, '+')); // Output: 15.0
         System.out.println(calculate(10, 5, '-')); // Output: 5.0
         System.out.println(calculate(10, 5, '*')); // Output: 50.0
